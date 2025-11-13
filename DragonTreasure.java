@@ -71,16 +71,16 @@ public class DragonTreasure {
         );
 
         Room corridorRoom = new Room(
-            "Du ser en läst dörr i öster [ö]\n" +
-            "Du ser en utgång österut [ö]"
+            "Du står i en korridor. Det luktar unket här.\n" +
+            "Du ser en låst dörr i öster."
         );
 
         Room emptyRoomNorth = new Room(
-            "Du ser en dåd kropp på golvet."
+            "Du ser en död kropp på golvet."
         );
 
         Room emptyRoomSouth = new Room(
-            "Du kan åka söderut [s]"
+            "Ett tomt rum. Du hör ett mullrande ljud i fjärran."
         );
 
         Room darkRoom = new Room(
@@ -88,13 +88,11 @@ public class DragonTreasure {
         );
 
         Room treasureRoom = new Room(
-            "Du kommer in i ett fuktigt rum med vatten sipprandes längs den västra väggen.\n" +
-            "Du ser en läst dörr i öster [ö]"
+            "Du kommer in i ett fuktigt rum med vatten sipprandes längs den västra väggen."
         );
 
         Room deepCaveRoom = new Room(
-            "Du ser en brinnande fackla i rummets ena hörn och känner en motbjudande stank.\n" +
-            "Du ser en utgång österut [ö]"
+            "Du ser en brinnande fackla i rummets ena hörn och känner en motbjudande stank."
         );
 
         Room hallRoom = new Room(
@@ -114,6 +112,7 @@ public class DragonTreasure {
 
         corridorRoom.addDoor(new Door('n', false, emptyRoomNorth));
         corridorRoom.addDoor(new Door('s', false, emptyRoomSouth));
+        corridorRoom.addDoor(new Door('ö', true, treasureRoom));  // Låst dörr!
 
         emptyRoomNorth.addDoor(new Door('s', false, corridorRoom));
         emptyRoomNorth.addDoor(new Door('v', false, darkRoom));
