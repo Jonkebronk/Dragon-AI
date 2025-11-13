@@ -74,15 +74,30 @@ public class Door {
     public String getDirectionName() {
         switch (position) {
             case 'n':
-                return "norr";
+                return "north";
             case 's':
-                return "söder";
+                return "south";
             case 'ö':
-                return "öster";
+                return "east";
             case 'v':
-                return "väster";
+                return "west";
             default:
-                return "okänt";
+                return "unknown";
+        }
+    }
+
+    /**
+     * Returnerar kommandot för denna dörr (för visning).
+     * @return Kommandot som char ('n', 's', 'e', 'w')
+     */
+    public char getCommandChar() {
+        switch (position) {
+            case 'ö':
+                return 'e';
+            case 'v':
+                return 'w';
+            default:
+                return position;
         }
     }
 }

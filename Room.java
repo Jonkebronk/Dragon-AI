@@ -78,7 +78,7 @@ public class Room {
 
             for (Door door : doors) {
                 if (!door.isLocked()) {
-                    directions.add(door.getDirectionName() + " [" + door.getPosition() + "]");
+                    directions.add(door.getDirectionName() + " [" + door.getCommandChar() + "]");
                 }
             }
 

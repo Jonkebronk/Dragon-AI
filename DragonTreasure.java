@@ -23,29 +23,8 @@ public class DragonTreasure {
     private static void setupGame() {
         Scanner scanner = new Scanner(System.in);
 
-        // Visa välkomstskärm med ASCII art
-        System.out.println(
-            "                  _.--.\n"+
-            "              _.-'_:-'||\n"+
-            "          _.-'_.-::::'||\n"+
-            "     _.-:'_.-::::::'  ||\n"+
-            "   .'`-.-:::::::'     ||\n"+
-            "  /.'`;|:::::::'      ||_\n"+
-            " ||   ||::::::'      _.;._'-._\n"+
-            " ||   ||:::::'   _.-!oo @.!-._'-.\n"+
-            " \'.  ||:::::.-!() oo @!()@.-'_.||\n"+
-            "   '.'-;|:.-'.&$@.& ()$%-'o.'\\U||\n"+
-            "     `>'-.!@%()@'@_%-'_.-o _.|'||\n"+
-            "      ||-._'-.@.-'_.-' _.-o  |'||\n"+
-            "      ||=[ '-._.-\\U/.-'    o |'||\n"+
-            "      || '-.]=|| |'|      o  |'||\n"+
-            "      ||      || |'|        _| ';\n"+
-            "      ||      || |'|    _.-'_.-'\n"+
-            "      |'-._   || |'|_.-'_.-'\n"+
-            "      '-._'-.|| |' `_.-'\n"+
-            "           '-.||_/.-'\n");
-
-        System.out.println("\nVälkommen till Dragon Treasure!");
+        // Visa välkomstskärm
+        System.out.println("Välkommen till Dragon Treasure!");
         System.out.print("Skriv ditt namn och tryck på [Enter] för att starta ett nytt spel... ");
         String playerName = scanner.nextLine();
 
@@ -60,7 +39,7 @@ public class DragonTreasure {
         // Skapa alla rum enligt körexemplet
         Room startRoom = new Room(
             "Du står utanför en grotta. Det luktar svavel från öppningen.\n" +
-            "Grottsöppningen är österut. Skriv \"ö\" och tryck på [Enter] för att komma in i grottan"
+            "Grottsöppningen är österut. Skriv \"e\" och tryck på [Enter] för att komma in i grottan"
         );
 
         Room entranceRoom = new Room(
@@ -74,12 +53,12 @@ public class DragonTreasure {
 
         Room torchRoom = new Room(
             "Du ser en brinnande fackla i rummets ena hörn och känner en motbjudande stank.\n" +
-            "Du ser en utgång österut [ö]"
+            "Du ser en utgång österut [e]"
         );
 
         Room wetRoom = new Room(
             "Du kommer in i ett fuktigt rum med vatten sipprandes längs den västra väggen.\n" +
-            "Du ser en låst dörr i öster [ö]"
+            "Du ser en låst dörr i öster [e]"
         );
 
         Room hallRoom = new Room(
