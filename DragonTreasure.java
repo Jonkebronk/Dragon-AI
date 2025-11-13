@@ -81,7 +81,7 @@ public class DragonTreasure {
 
         Room wetRoom = new Room(
             "Du kommer in i ett fuktigt rum med vatten sipprandes längs den västra väggen.\n" +
-            "Du ser en läst dörr i öster [ö]"
+            "Du ser en låst dörr i öster [ö]"
         );
 
         Room hallRoom = new Room(
