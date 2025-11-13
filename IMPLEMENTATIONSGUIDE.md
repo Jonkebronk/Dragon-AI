@@ -925,7 +925,95 @@ Lösning: Kom ihåg att dörrar är enkelriktade.
 
 ---
 
-## 8. Resurser för vidare studier
+## 8. Viktiga uppdateringar och problemlösningar
+
+### 8.1 Teckenuppsättningsproblem i Windows
+
+**Problem:** Svenska tecken (ö, å, ä) fungerade inte korrekt i Windows Command Prompt.
+
+**Symptom:**
+```
+Vad vill du göra? ö
+Du kan inte gå åt det hållet!  // Trots att "ö" var giltigt
+```
+
+**Orsak:** Windows CMD använder olika character encoding (codepage) än Java, vilket gör att 'ö' från tangentbordet inte matchar 'ö' i programmet.
+
+**Lösning:**
+1. Skapade `parseDirection()` metod som accepterar många varianter:
+   - Svenska: `ö`, `öster`, `norr`, `söder`, `väster`
+   - Engelska: `e`, `east`, `n`, `north`, `s`, `south`, `w`, `west`
+   - Alternativa: `o` (för öster), `v` (för väster)
+
+2. Uppdaterade användar interfacet till engelska kommandon:
+   - Door.getDirectionName() returnerar "north", "south", "east", "west"
+   - Ny getCommandChar() metod konverterar 'ö' → 'e', 'v' → 'w'
+   - Spelet visar nu: "Du kan gå east [e]" istället för "Du kan gå öster [ö]"
+
+**Kod:**
+```java
+// I Dungeon.java
+private char parseDirection(String input) {
+    switch (input) {
+        case "n":
+        case "norr":
+        case "north":
+            return 'n';
+        case "e":
+        case "o":
+        case "ö":
+        case "east":
+        case "öster":
+        case "oster":
+            return 'ö';
+        // ... osv
+    }
+}
+```
+
+### 8.2 Stavfel och konsekvens
+
+**Fel hittade och fixade:**
+- "dåd kropp" → "död kropp" (läst vs läsa)
+- "läst dörr" → "låst dörr" (läst vs låst)
+- Dubbletter i välkomstmeddelanden borttagna
+
+### 8.3 Designförbättringar
+
+**ASCII-art hantering:**
+- Drake-ASCII visas i början för atmosfär
+- Skattkista-ASCII visas när man vinner
+- Skattkista visas också genom nyckelhålet (låst dörr)
+
+**Navigation:**
+Förenklad struktur med 7 rum:
+```
+Start → Ingång → (Tomt rum | Fackla rum)
+                       ↓
+                  Fuktigt rum → Bergrum
+                  (Låst dörr)
+```
+
+**Låst dörr feature:**
+```java
+if (door.isLocked()) {
+    System.out.println("Du har ingen nyckel som passar.");
+    System.out.println("Du kikar genom nyckelhålet...");
+    System.out.println(getTreasurePreview());
+}
+```
+
+### 8.4 Lärdomar från verklig användning
+
+1. **Alltid testa i målmiljön:** Windows CMD beter sig annorlunda än Linux terminal
+2. **Användarupplevelse är viktig:** Engelsk interface är mer universellt
+3. **Flexibel input:** Acceptera flera varianter av samma kommando
+4. **Tydliga felmeddelanden:** "Du kan inte gå åt det hållet!" är tydligare än bara "Error"
+5. **Konsistent ordval:** Använd samma terminologi genom hela koden
+
+---
+
+## 9. Resurser för vidare studier
 
 **Officiell Java-dokumentation:**
 - Scanner: https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html

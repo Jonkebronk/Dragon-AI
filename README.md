@@ -56,15 +56,18 @@ java DragonTreasure
 ### Kommandon (flera alternativ fungerar):
 
 **Navigation:**
-- **Norr**: `n`, `norr`, eller `north`
-- **Söder**: `s`, `söder`, `soder`, eller `south`
-- **Öster**: `e`, `o`, `ö`, `öster`, `oster`, eller `east`
-- **Väster**: `w`, `v`, `väster`, `vaster`, eller `west`
+Spelet visar riktningar på engelska för bästa Windows-kompatibilitet:
+- **North (norr)**: `n`, `norr`, eller `north`
+- **South (söder)**: `s`, `söder`, `soder`, eller `south`
+- **East (öster)**: `e`, `o`, `ö`, `öster`, `oster`, eller `east`
+- **West (väster)**: `w`, `v`, `väster`, `vaster`, eller `west`
+
+**Exempel:** När spelet visar "Du kan gå north [n] eller south [s]", skriv `n` eller `s`
 
 **Avsluta:**
-- `exit`, `quit`, `avsluta`, eller `ö`
+- `exit`, `quit`, eller `avsluta`
 
-**OBS!** På grund av teckenuppsättningsproblem i Windows Command Prompt rekommenderas de engelska kommandona (`n`, `s`, `e`, `w`) för bäst kompatibilitet.
+**Tips:** De engelska enkelkommandona (`n`, `s`, `e`, `w`) fungerar alltid och rekommenderas för bäst kompatibilitet med Windows Command Prompt.
 
 ### Spelflöde:
 1. Spelet visar en välkomstskärm med ASCII-art
