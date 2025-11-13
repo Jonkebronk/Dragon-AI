@@ -1,0 +1,26 @@
+# Compiled class files
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# IDE specific files
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Zip files (can be regenerated)
+*.zip
+
+# Build directories
+target/
+build/
+out/
