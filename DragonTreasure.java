@@ -59,10 +59,10 @@ public class DragonTreasure {
         dungeon = new Dungeon(welcomeMsg);
         dungeon.setPlayer(player);
 
-        // Skapa alla rum
+        // Skapa alla rum enligt körexemplet
         Room startRoom = new Room(
             "Du står utanför en grotta. Det luktar svavel från öppningen.\n" +
-            "Grottsöppningen är österut."
+            "Grottsöppningen är österut. Skriv \"ö\" och tryck på [Enter] för att komma in i grottan"
         );
 
         Room entranceRoom = new Room(
@@ -70,76 +70,58 @@ public class DragonTreasure {
             "Rummet är upplyst av några ljus som sitter på ett bord framför dig."
         );
 
-        Room corridorRoom = new Room(
-            "Du står i en korridor. Det luktar unket här.\n" +
-            "Du ser en låst dörr i öster."
-        );
-
-        Room emptyRoomNorth = new Room(
+        Room emptyRoom = new Room(
             "Du ser en död kropp på golvet."
         );
 
-        Room emptyRoomSouth = new Room(
-            "Ett tomt rum. Du hör ett mullrande ljud i fjärran."
+        Room torchRoom = new Room(
+            "Du ser en brinnande fackla i rummets ena hörn och känner en motbjudande stank.\n" +
+            "Du ser en utgång österut [ö]"
         );
 
-        Room darkRoom = new Room(
-            "Det är mycket mörkt här. Du hör något andas tungt någonstans."
-        );
-
-        Room treasureRoom = new Room(
-            "Du kommer in i ett fuktigt rum med vatten sipprandes längs den västra väggen."
-        );
-
-        Room deepCaveRoom = new Room(
-            "Du ser en brinnande fackla i rummets ena hörn och känner en motbjudande stank."
+        Room wetRoom = new Room(
+            "Du kommer in i ett fuktigt rum med vatten sipprandes längs den västra väggen.\n" +
+            "Du ser en läst dörr i öster [ö]"
         );
 
         Room hallRoom = new Room(
-            "Du kommer in i ett rymligt bergrum med ljusstrimma sipprandes genom en spricka i\n" +
+            "Du kommer in i ett rymligt bergrum med en ljusstrimma sipprandes genom en spricka i\n" +
             "den östra väggen."
         );
 
-        Room finalRoom = new Room(
+        Room exitRoom = new Room(
             "Du lämnar grottan med livet i behåll. Grattis, du förlorade inte!\n\n" +
             getTreasureArt()
         );
 
-        // Koppla ihop rum med dörrar
+        // Koppla ihop rum med dörrar enligt körexemplet
         startRoom.addDoor(new Door('ö', false, entranceRoom));
 
-        entranceRoom.addDoor(new Door('v', false, corridorRoom));
+        entranceRoom.addDoor(new Door('n', false, emptyRoom));
+        entranceRoom.addDoor(new Door('s', false, torchRoom));
 
-        corridorRoom.addDoor(new Door('n', false, emptyRoomNorth));
-        corridorRoom.addDoor(new Door('s', false, emptyRoomSouth));
-        corridorRoom.addDoor(new Door('ö', true, treasureRoom));  // Låst dörr!
+        emptyRoom.addDoor(new Door('s', false, torchRoom));
+        emptyRoom.addDoor(new Door('v', false, wetRoom));
 
-        emptyRoomNorth.addDoor(new Door('s', false, corridorRoom));
-        emptyRoomNorth.addDoor(new Door('v', false, darkRoom));
+        torchRoom.addDoor(new Door('ö', false, exitRoom));
+        torchRoom.addDoor(new Door('v', false, wetRoom));
+        torchRoom.addDoor(new Door('s', false, hallRoom));
 
-        emptyRoomSouth.addDoor(new Door('n', false, corridorRoom));
-        emptyRoomSouth.addDoor(new Door('v', false, treasureRoom));
+        wetRoom.addDoor(new Door('ö', true, wetRoom));  // Låst dörr med speciellt meddelande
+        wetRoom.addDoor(new Door('n', false, torchRoom));
+        wetRoom.addDoor(new Door('v', false, hallRoom));
 
-        darkRoom.addDoor(new Door('ö', false, emptyRoomNorth));
-
-        treasureRoom.addDoor(new Door('ö', false, deepCaveRoom));
-
-        deepCaveRoom.addDoor(new Door('ö', false, emptyRoomSouth));
-        deepCaveRoom.addDoor(new Door('s', false, hallRoom));
-
-        hallRoom.addDoor(new Door('v', false, finalRoom));
+        hallRoom.addDoor(new Door('n', false, wetRoom));
+        hallRoom.addDoor(new Door('ö', false, wetRoom));
 
         // Lägg till alla rum i dungeon
         dungeon.addRoom(startRoom);
         dungeon.addRoom(entranceRoom);
-        dungeon.addRoom(corridorRoom);
-        dungeon.addRoom(emptyRoomNorth);
-        dungeon.addRoom(emptyRoomSouth);
-        dungeon.addRoom(darkRoom);
-        dungeon.addRoom(treasureRoom);
-        dungeon.addRoom(deepCaveRoom);
+        dungeon.addRoom(emptyRoom);
+        dungeon.addRoom(torchRoom);
+        dungeon.addRoom(wetRoom);
         dungeon.addRoom(hallRoom);
-        dungeon.addRoom(finalRoom);
+        dungeon.addRoom(exitRoom);
 
         // Sätt startrummet
         dungeon.setCurrentRoom(startRoom);

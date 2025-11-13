@@ -126,7 +126,10 @@ public class Dungeon {
 
                 if (door != null) {
                     if (door.isLocked()) {
-                        System.out.println("\nDörren är låst!");
+                        // Speciellt meddelande för låst dörr med nyckelhål
+                        System.out.println("\nDu har ingen nyckel som passar.");
+                        System.out.println("Du kikar genom nyckelhålet och ser en skattkista full med guld.");
+                        System.out.println(getTreasurePreview());
                     } else {
                         // Flytta till nästa rum
                         currentRoom = door.getLeadsTo();
@@ -183,5 +186,45 @@ public class Dungeon {
             default:
                 return '\0';
         }
+    }
+
+    /**
+     * Returnerar ASCII art för skatten (preview genom nyckelhål).
+     * @return Skatten som ASCII art
+     */
+    private String getTreasurePreview() {
+        return "                                                  .~))>>\n"+
+               "                                                 .~)>>\n"+
+               "                                               .~))))>>>\n"+
+               "                                             .~))>>             ___\n"+
+               "                                           .~))>>)))>>      .-~))>>\n"+
+               "                                         .~)))))>>       .-~))>>)>\n"+
+               "                                       .~)))>>))))>>  .-~)>>)>\n"+
+               "                   )                 .~))>>))))>>  .-~)))))>>)>\n"+
+               "                ( )@@*)             //)>))))))  .-~))))>>)>\n"+
+               "              ).@(@@               //))>>))) .-~))>>)))))>>)>\n"+
+               "            (( @.@).              //))))) .-~)>>)))))>>)>\n"+
+               "          ))  )@@*.@@ )          //)>))) //))))))>>))))>>)>\n"+
+               "       ((  ((@@@.@@             |/))))) //)))))>>)))>>)>\n"+
+               "      )) @@*. )@@ )   (\\_(\\-\\b  |))>)) //)))>>)))))))>>)>\n"+
+               "    (( @@@(.@(@ .    _/`-`  ~|b |>))) //)>>)))))))>>)>\n"+
+               "     )* @@@ )@*     (@)  (@) /\\b|))) //))))))>>))))>>\n"+
+               "   (( @. )@( @ .   _/  /    /  \\b)) //))>>)))))>>>_._\n"+
+               "    )@@ (@@*)@@.  (6///6)- / ^  \\b)//))))))>>)))>>   ~~-.\n"+
+               " ( @jgs@@. @@@.*@_ VvvvvV//  ^  \\b/)>>))))>>      _.     `bb\n"+
+               " ((@@ @@@*.(@@ . - | o |' \\ (  ^   \\b)))>>        .'       b`,\n"+
+               "   ((@@).*@@ )@ )   \\^^^/  ((   ^  ~)_        \\  /           b `,\n"+
+               "     (@@. (@@ ).     `-'   (((   ^    `\\ \\ \\ \\ \\|             b  `.\n"+
+               "       (*.@*              / ((((        \\| | |  \\       .       b `.\n"+
+               "                         / / (((((  \\    \\ /  _.-~\\     Y,      b  ;\n"+
+               "                        / / / (((((( \\    \\.-~   _.`\" _.-~`,    b  ;\n"+
+               "                       /   /   `(((((()    )    (((((~      `,  b  ;\n"+
+               "                     _/  _/      `\"\"\"/   /'                  ; b   ;\n"+
+               "                 _.-~_.-~           /  /'                _.'~bb _.'\n"+
+               "               ((((~~              / /'              _.'~bb.--~\n"+
+               "                                  ((((          __.-~bb.-~\n"+
+               "                                              .'  b .~~\n"+
+               "                                              :bb ,' \n"+
+               "                                              ~~~~\n";
     }
 }
