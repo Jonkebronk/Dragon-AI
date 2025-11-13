@@ -23,8 +23,29 @@ public class DragonTreasure {
     private static void setupGame() {
         Scanner scanner = new Scanner(System.in);
 
-        // Visa välkomstskärm
-        System.out.println("Välkommen till Dragon Treasure!");
+        // Visa välkomstskärm med ASCII art
+        System.out.println(
+            "                  _.--.\n"+
+            "              _.-'_:-'||\n"+
+            "          _.-'_.-::::'||\n"+
+            "     _.-:'_.-::::::'  ||\n"+
+            "   .'`-.-:::::::'     ||\n"+
+            "  /.'`;|:::::::'      ||_\n"+
+            " ||   ||::::::'      _.;._'-._\n"+
+            " ||   ||:::::'   _.-!oo @.!-._'-.\n"+
+            " \'.  ||:::::.-!() oo @!()@.-'_.||\n"+
+            "   '.'-;|:.-'.&$@.& ()$%-'o.'\\U||\n"+
+            "     `>'-.!@%()@'@_%-'_.-o _.|'||\n"+
+            "      ||-._'-.@.-'_.-' _.-o  |'||\n"+
+            "      ||=[ '-._.-\\U/.-'    o |'||\n"+
+            "      || '-.]=|| |'|      o  |'||\n"+
+            "      ||      || |'|        _| ';\n"+
+            "      ||      || |'|    _.-'_.-'\n"+
+            "      |'-._   || |'|_.-'_.-'\n"+
+            "      '-._'-.|| |' `_.-'\n"+
+            "           '-.||_/.-'\n");
+
+        System.out.println("\nVälkommen till Dragon Treasure!");
         System.out.print("Skriv ditt namn och tryck på [Enter] för att starta ett nytt spel... ");
         String playerName = scanner.nextLine();
 
