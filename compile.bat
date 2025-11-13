@@ -7,7 +7,7 @@ if %errorlevel% == 0 (
     echo Kompileringen lyckades!
     echo.
     echo Du kan nu köra spelet med run.bat eller:
-    echo java ltu.fksyg.d0019n.DragonTreasure
+    echo java DragonTreasure
     echo.
 ) else (
     echo.

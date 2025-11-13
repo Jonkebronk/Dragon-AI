@@ -48,7 +48,7 @@ Projektet består av följande klasser:
 javac -encoding UTF-8 *.java
 
 # Köra
-java ltu.fksyg.d0019n.DragonTreasure
+java DragonTreasure
 ```
 
 ## Spelmekanik

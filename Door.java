@@ -1,5 +1,3 @@
-package ltu.fksyg.d0019n;
-
 /**
  * Representerar en dörr mellan två rum i dungeon.
  * Varje dörr har en position (väderstreck) och kan vara låst eller olåst.

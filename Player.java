@@ -1,5 +1,3 @@
-package ltu.fksyg.d0019n;
-
 /**
  * Representerar en spelare i Dragon Treasure spelet.
  * Spelaren har ett namn och navigerar genom dungeon.

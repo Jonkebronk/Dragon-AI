@@ -1,5 +1,3 @@
-package ltu.fksyg.d0019n;
-
 import java.util.Scanner;
 
 /**
