@@ -53,9 +53,7 @@ public class DragonTreasure {
         player = new Player(playerName);
 
         // Skapa dungeon med välkomstmeddelande
-        String welcomeMsg = "Välkommen " + playerName + " till din skattjakt.\n" +
-                           "Du står utanför en grotta. Det luktar svavel från öppningen.\n" +
-                           "Grottsöppningen är österut.";
+        String welcomeMsg = "Välkommen " + playerName + " till din skattjakt.";
         dungeon = new Dungeon(welcomeMsg);
         dungeon.setPlayer(player);
 
