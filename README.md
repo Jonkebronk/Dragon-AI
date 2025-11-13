@@ -38,24 +38,33 @@ Projektet består av följande klasser:
 
 ## Kompilering och Körning
 
-### Kompilera programmet:
-```bash
-javac ltu/fksyg/d0019n/*.java
-```
+### Windows (Enklast):
+1. Dubbelklicka på **compile.bat** för att kompilera
+2. Dubbelklicka på **run.bat** för att köra spelet
 
-### Köra programmet:
+### Manuellt:
 ```bash
+# Kompilera
+javac -encoding UTF-8 *.java
+
+# Köra
 java ltu.fksyg.d0019n.DragonTreasure
 ```
 
 ## Spelmekanik
 
-### Kommandon:
-- **n** - Gå norrut
-- **s** - Gå söderut
-- **ö** - Gå österut
-- **v** - Gå västerut
-- **ö** (när spelet frågar) - Avsluta spelet
+### Kommandon (flera alternativ fungerar):
+
+**Navigation:**
+- **Norr**: `n`, `norr`, eller `north`
+- **Söder**: `s`, `söder`, `soder`, eller `south`
+- **Öster**: `e`, `o`, `ö`, `öster`, `oster`, eller `east`
+- **Väster**: `w`, `v`, `väster`, `vaster`, eller `west`
+
+**Avsluta:**
+- `exit`, `quit`, `avsluta`, eller `ö`
+
+**OBS!** På grund av teckenuppsättningsproblem i Windows Command Prompt rekommenderas de engelska kommandona (`n`, `s`, `e`, `w`) för bäst kompatibilitet.
 
 ### Spelflöde:
 1. Spelet visar en välkomstskärm med ASCII-art

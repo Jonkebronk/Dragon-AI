@@ -101,6 +101,9 @@ public class Dungeon {
     public void playGame() {
         boolean playing = true;
 
+        System.out.println("\n=== TIPS: Använd n/s/e/w eller norr/söder/öster/väster för att navigera ===");
+        System.out.println("=== Skriv 'exit' eller 'quit' för att avsluta spelet ===\n");
+
         while (playing) {
             // Visa rumsbeskrivning och tillgängliga dörrar
             System.out.println();
@@ -111,13 +114,16 @@ public class Dungeon {
             System.out.print("Vad vill du göra? ");
             String input = scanner.nextLine().trim().toLowerCase();
 
+            // Konvertera input till riktning
+            char direction = parseDirection(input);
+
             // Hantera spelarens kommando
-            if (input.equals("ö")) {
+            if (input.equals("exit") || input.equals("quit") || input.equals("avsluta") || input.equals("ö")) {
                 // Avsluta spelet
                 System.out.println("\nTack för att du spelade Dragon Treasure, " + player.getName() + "!");
                 playing = false;
-            } else if (input.length() == 1) {
-                char direction = input.charAt(0);
+            } else if (direction != '\0') {
+                // Försök gå i den riktningen
                 Door door = currentRoom.getDoor(direction);
 
                 if (door != null) {
@@ -131,10 +137,53 @@ public class Dungeon {
                     System.out.println("\nDu kan inte gå åt det hållet!");
                 }
             } else {
-                System.out.println("\nOgiltigt kommando! Använd väderstreck (n, s, ö, v) för att navigera eller 'ö' för att avsluta.");
+                System.out.println("\nOgiltigt kommando! Använd: n, s, e, w (eller norr, söder, öster, väster)");
             }
         }
 
         scanner.close();
+    }
+
+    /**
+     * Konverterar användarinput till en riktning (väderstreck).
+     * Accepterar både svenska och engelska kommandon.
+     * @param input Användarens input
+     * @return Riktning som char ('n', 's', 'ö', 'v') eller '\0' om ogiltig
+     */
+    private char parseDirection(String input) {
+        switch (input) {
+            // Norr
+            case "n":
+            case "norr":
+            case "north":
+                return 'n';
+
+            // Söder
+            case "s":
+            case "söder":
+            case "soder":
+            case "south":
+                return 's';
+
+            // Öster
+            case "ö":
+            case "o":
+            case "e":
+            case "öster":
+            case "oster":
+            case "east":
+                return 'ö';
+
+            // Väster
+            case "v":
+            case "w":
+            case "väster":
+            case "vaster":
+            case "west":
+                return 'v';
+
+            default:
+                return '\0';
+        }
     }
 }
